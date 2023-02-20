@@ -1,0 +1,33 @@
+// TapeEquilibrium Codility problem solution with C++
+
+// you can use includes, for example:
+#include <algorithm>
+#include <numeric>
+#include <vector>
+#include <climits>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &A) {
+    // Implement your solution here
+    if(A.empty())
+    {
+        return 0;
+    }
+    int total_Sum = accumulate(A.begin(), A.end(), 0);
+    long long int sumLeft = 0;
+    int N = A.size();
+    int minDiff = INT_MAX;
+
+    for(int i = 0; i < N-1; i++)
+    {
+        sumLeft += A[i];
+        int diff = abs((2*sumLeft) - total_Sum);
+        minDiff = min(minDiff, diff);
+    }
+    return minDiff;
+}
