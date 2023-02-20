@@ -1,0 +1,35 @@
+// Frog Jump Codility problem solution code in C++
+
+// you can use includes, for example:
+// #include <algorithm>
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(int X, int Y, int D) {
+    // Implement your solution here
+    // X = 10, Y = 85, D = 30
+    int C = (Y - X) / D;
+
+    if( (X + (C*D)) < Y )
+    {
+        C += 1;
+    }
+    return C;
+}
+
+//==========================================================
+
+#Frog Jump Codility problem solution code in Python
+
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(X, Y, D):
+    # Implement your solution here
+    C = (Y - X) // D
+
+    if X + (C*D) < Y:
+        C += 1
+    return C
+    pass
