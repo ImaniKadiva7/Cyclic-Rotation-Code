@@ -1,0 +1,43 @@
+// My Cyclic Rotation codility solution code in C++
+
+// you can use includes, for example:
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+vector<int> solution(vector<int> &A, int K) {
+    // Implement your solution here
+    int N = A.size();
+    vector<int> B(N);
+
+    for(int i = 0; i < N; i++)
+    {
+        B[(i+K) % N] = A[i];
+    }
+    return B;
+}
+
+
+//==================================================================================
+
+
+// My Cyclic Rotation codility solution code in Python
+
+
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A, K):
+    # Implement your solution here
+    N = len(A)
+    B = [0] * N
+
+    for i in range(0, N):
+        B[(i+K) % N] = A[i]
+    return B
+    pass
