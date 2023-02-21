@@ -1,0 +1,78 @@
+// My Missing Integer Codility problem coding solution in C++
+
+// you can use includes, for example:
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &A) {
+    // Implement your solution here
+    if(A.empty())
+    {
+        return 1;
+    }
+    sort(A.begin(), A.end());
+    int N = A.size();
+    if(A[N-1] <= 0)
+    {
+        return 1;
+    }
+    bool ISone = 0;
+    for(int i = 0; i < N; i++)
+    {
+        if(A[i] == 1)
+        {
+            ISone = true;
+        }
+    }
+    if(ISone == 0)
+    {
+        return 1;
+    }
+
+    // A = [ 1, 3, 6, 4, 1, 2 ]
+    // sort A = [ 1, 1, 2, 3, 4, 6 ]
+
+    for(int i = 0; i < N-1; i++)
+    {
+        if( (A[i] > 0) && (A[i+1] - A[i]) > 1)
+        {
+            return A[i] + 1;
+        }
+    }
+    return A[N-1] + 1;
+}
+
+//===========================================================
+
+#// My Missing Integer Codility problem coding solution in Python
+
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # Implement your solution here
+    N = len(A)
+    if N == 0:
+        return 1
+    A.sort()
+    if A[N-1] <= 0:
+        return 1
+    ISone = 0
+    for i in range(0, N):
+        if A[i] == 1:
+            ISone = True
+    
+    if ISone == 0:
+        return 1
+    
+    for i in range(0, N-1):
+        if A[i] > 0 and (A[i+1] - A[i]) > 1:
+            return A[i] + 1
+    return A[N-1] + 1
+    pass
