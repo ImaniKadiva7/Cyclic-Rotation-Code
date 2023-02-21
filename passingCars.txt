@@ -1,0 +1,53 @@
+// you can use includes, for example:
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &A) {
+    // Implement your solution here
+    // A = [ 0, 1, 0, 1, 1 ]
+    int cars_East = 0, N = A.size();
+    long long int pairs = 0;
+
+    for(int i = 0; i < N; i++)
+    {
+        if(A[i] == 0)
+        {
+            cars_East++;
+        }
+        else
+        {
+            pairs += cars_East;
+            if(pairs > 1000000000)
+            {
+                return -1;
+            }
+        }
+    }
+    return pairs;
+}
+
+///////////======================================================
+
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # Implement your solution here
+    N = len(A)
+    cars_East = 0
+    pairs = 0
+    for i in range(0, N):
+        if A[i] == 0:
+            cars_East+=1
+        else:
+            pairs += cars_East
+            if pairs > 1000000000:
+                return -1
+    return pairs
+    pass

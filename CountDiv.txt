@@ -1,0 +1,29 @@
+// you can use includes, for example:
+// #include <algorithm>
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(int A, int B, int K) {
+    // Implement your solution here
+    int C = (B / K) - (A / K);
+    if( (A % K) == 0 )
+    {
+        C++;
+    }
+    return C;
+}
+
+//===========================================================
+
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A, B, K):
+    # Implement your solution here
+    C = (B // K) - (A // K)
+
+    if (A % K) == 0:
+        C += 1
+    return C
+    pass

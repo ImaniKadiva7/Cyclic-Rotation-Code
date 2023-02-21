@@ -1,0 +1,35 @@
+// you can use includes, for example:
+#include <algorithm>
+#include <vector>
+#include <climits>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &A) {
+    // Implement your solution here
+    // A = [ 4, 2, 2, 5, 1, 5, 8 ]
+    int N = A.size();
+    float minimum_Average = INT_MAX;
+    int minimum_index = 0;
+    for(int i = 0; i < N-2; i++)
+    {
+        float v1 = float(A[i] + A[i + 1]) / 2;
+        float v2 = float(A[i] + A[i + 1] + A[i + 2]) / 3;
+
+        if( (minimum_Average > v1) || (minimum_Average > v2) )
+        {
+            minimum_Average = min(v1, v2);
+            minimum_index = i;
+        }
+    }
+
+    if( minimum_Average > (A[N-1] + A[N-2]) / 2 )
+    {
+        return (N - 2);
+    }
+    return minimum_index;
+}
