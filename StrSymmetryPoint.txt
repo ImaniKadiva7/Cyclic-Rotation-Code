@@ -1,0 +1,54 @@
+// you can use includes, for example:
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(string &S) {
+    // Implement your solution here
+    if(S.empty())
+    {
+        return 0;
+    }
+
+    int N = S.size();
+    if( (N % 2) == 0 )
+    {
+        return 0;
+    }
+
+    for(int i = 0; i < N; i++)
+    {
+        if(S[i] != S[N-1-i])
+        {
+            return -1;
+        }
+    }
+    return N /= 2;
+
+}
+
+//============================================================
+
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(S):
+    # Implement your solution here
+    N = len(S)
+    if N == 0:
+        return -1
+
+    if N % 2 == 0:
+        return -1
+    
+    for i in range(0, N):
+        if S[i] != S[N-1-i]:
+            return -1
+    return N // 2
+    pass

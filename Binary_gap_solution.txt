@@ -1,0 +1,38 @@
+MY CODILITY BINARY GAP SOLUTION IN C++
+
+// you can use includes, for example:
+#include <algorithm>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(int N) {
+    // Implement your solution here
+    vector<int> A;
+
+    while(N > 0)
+    {
+        A.push_back(N%2);
+        N /= 2;
+    }
+
+    int number_zero = 0, max_binary_gap = 0;
+
+    for(int i = A.size() - 1; i >= 0; i--)
+    {
+        if(A[i] == 0)
+        {
+            number_zero++;
+        }
+        else
+        {
+            max_binary_gap = max(max_binary_gap, number_zero);
+            number_zero = 0;
+        } 
+    }
+    return max_binary_gap;
+}

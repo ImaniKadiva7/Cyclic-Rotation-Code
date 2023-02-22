@@ -1,0 +1,45 @@
+// you can use includes, for example:
+
+
+#include <algorithm>
+#include <vector>
+#include <unordered_map>
+#include <queue>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &A) {
+    // Implement your solution here
+    // A = [ 4, 10, 5, 4, 2, 10 ]
+    // Return the first unique number in A, return -1 if there are no unique numbers
+    // A = [ 6, 4, 4, 6 ]
+
+    unordered_map<int, int> my_map;
+    queue<int> my_queue;
+    int N = A.size();
+    if(A.empty())
+    {
+        return -1;
+    }
+
+    for(int i = 0; i < N; i++)
+    {
+        my_map[A[i]]++;
+        my_queue.push(A[i]);
+    }
+
+    while(!my_queue.empty() && my_map[my_queue.front()] > 1)
+    {
+        my_queue.pop();
+    }
+    if(my_queue.empty())
+    {
+        return -1;
+    }
+    return my_queue.front();
+    
+}

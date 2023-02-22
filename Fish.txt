@@ -1,0 +1,40 @@
+// you can use includes, for example:
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &A, vector<int> &B) {
+    // Implement your solution here
+    vector<int> ds;
+    int N = B.size();
+    int number_of_fish_eaten = 0;
+    for(int i = 0; i < N; i++)
+    {
+        if(B[i] == 1)
+        {
+            ds.push_back(A[i]);
+        }
+        else
+        {
+            while(!ds.empty())
+            {
+                if(ds.back() > A[i])
+                {
+                    number_of_fish_eaten++;
+                    break;
+                }
+                else if(ds.back() < A[i])
+                {
+                    number_of_fish_eaten++;
+                    ds.pop_back();
+                }
+            }
+        }
+    }
+    return (N - number_of_fish_eaten);
+}

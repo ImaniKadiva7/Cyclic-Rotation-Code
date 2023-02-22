@@ -1,0 +1,70 @@
+
+// you can use includes, for example:
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int testLargeSum(int K, int M, vector<int> &A)
+{
+    int N = A.size(), j = 0;
+    long long int s = 0;
+    for(int i = 0; i < N; i++)
+    {
+        s += A[i];
+        if(s > M)
+        {
+            j++;
+            if(j > K-1)
+            {
+                return 0;
+            }
+            s = A[i];
+        }
+    }
+    return 1;
+}
+
+int solution(int K, int M, vector<int> &A) {
+    // Implement your solution here
+    // A = [ 2, 1, 5, 1, 2, 2, 2 ]
+    int N = A.size();
+    for(int i = K-1; i < N; i++)
+    {
+        M += A[i];
+    }
+    int Amax = 0;
+    for(int i = 0; i < N; i++)
+    {
+        if(Amax < A[i])
+        {
+            Amax = A[i];
+        }
+    }
+    int begin = Amax;
+    int end = M;
+    if(end <= begin)
+    {
+        swap(end, begin);
+    }
+    int largeSum = end;
+    while(begin <= end)
+    {
+        M = (begin + end) / 2;
+        int r = testLargeSum(K, M, A);
+        if(r)
+        {
+            end = M - 1;
+            largeSum = M;
+        }
+        else
+        {
+            begin = M + 1;
+        }
+    }
+    return largeSum;
+}

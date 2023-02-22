@@ -1,0 +1,52 @@
+// you can use includes, for example:
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &A) {
+    // Implement your solution here
+    // A = [ 3, 2, -6, 4, 0 ]
+    if(A.empty())
+    {
+        return 0;
+    }
+    int sum = 0, max_sum = A[0], N = A.size();
+
+    for(int i = 0; i < N; i++)
+    {
+        sum += A[i];
+        max_sum = max(max_sum, sum);
+        if(sum < 0)
+        {
+            sum = 0;
+        }
+    }
+    return max_sum;
+}
+//===================================================================
+
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # Implement your solution here
+    N = len(A)
+
+    if N == 0:
+        return 0
+    
+    sum = 0
+    max_sum = A[0]
+
+    for i in range(0, N):
+        sum += A[i]
+        max_sum = max(max_sum, sum)
+        if sum < 0:
+            sum = 0
+    return max_sum
+    pass

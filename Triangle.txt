@@ -1,0 +1,52 @@
+// you can use includes, for example:
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &A) {
+    // Implement your solution here
+    int N = A.size();
+
+    if(N < 3)
+    {
+        return 0;
+    }
+    // A = [ 10, 2, 5, 1, 8, 20 ]
+    // sort A = [ 1, 2, 5, 8, 10, 20 ]
+
+    sort(A.begin(), A.end());
+
+    for(int i = 0; i < N-2; i++)
+    {
+        if( A[i] > (-A[i+1] + A[i+2]) )
+        {
+            return 1; // triangle exists
+        }
+    }
+    return 0; // triangle doesn't exist
+}
+
+//======================================================================
+
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # Implement your solution here
+    N = len(A)
+
+    if N < 3:
+        return 0
+    
+    A.sort()
+
+    for i in range(0, N-2):
+        if A[i] > (-A[i+1] + A[i+2]):
+            return 1
+    return 0
+    pass

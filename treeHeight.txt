@@ -1,0 +1,19 @@
+// you can use includes, for example:
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(tree * T) {
+    // Implement your solution here
+    // Empty tree has a height of -1
+    if(T == NULL)
+    {
+        return -1;
+    }
+    return 1 + max(solution(T->l), solution(T->r));
+}

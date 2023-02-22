@@ -1,0 +1,48 @@
+// you can use includes, for example:
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &H) {
+    // Implement your solution here
+    // H = [ 8, 8, 5, 7, 9, 8, 7, 4, 8 ]
+    if(H.empty())
+    {
+        return 0;
+    }
+
+    int N = H.size(), blocks = 0, last = 0;
+    vector<int> S(N);
+
+    for(int i = 0; i < N; i++)
+    {
+        if(last < H[i])
+        {
+            last = H[i];
+            blocks++;
+            S.push_back(H[i]);
+        }
+        else if(H[i] < last)
+        {
+            int j = S.size() - 1;
+            while(H[i] < S[j])
+            {
+                S.pop_back();
+                j--;
+            }
+            if(H[i] != S[S.size() - 1])
+            {
+                S.push_back(H[i]);
+                blocks++;
+            }
+            last = H[i];
+        }
+    }
+    return blocks;
+}
+//===============================================================================

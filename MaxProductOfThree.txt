@@ -1,0 +1,42 @@
+// you can use includes, for example:
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &A) {
+    // Implement your solution here
+    int N = A.size();
+    if(N < 3)
+    {
+        return 0;
+    }
+    // A = [ -3, 1, 2, -2, 5, 6 ]
+    // sort A = [ -3, -2, 1, 2, 5, 6 ]
+    sort(A.begin(), A.end());
+    int firstProduct = A[0] * A[1] * A[N-1];
+    int secondProduct = A[N-1] * A[N-2] * A[N-3];
+    return max(firstProduct, secondProduct);
+}
+
+//==================================================================
+
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # Implement your solution here
+    N = len(A)
+
+    if N < 3:
+        return 0
+    
+    A.sort()
+    firstProduct = A[0] * A[1] * A[N-1]
+    secondProduct = A[N-1] * A[N-2] * A[N-3]
+    return max(firstProduct, secondProduct)
+    pass

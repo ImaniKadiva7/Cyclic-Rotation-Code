@@ -1,0 +1,88 @@
+// you can use includes, for example:
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &A) {
+    // Implement your solution here
+    // A = [ 3, 2, 6, -1, 4, 5, -1, 2 ]
+    int N = A.size();
+    int s = 0;
+    vector<int> LR(N, 0), RL(N, 0);
+
+    if( N <= 3 )
+    {
+        return 0;
+    }
+
+    for(int i = 1; i < N-1; i++)
+    {
+        s += A[i];
+        if(s < 0)
+        {
+            s = 0;
+        }
+        LR[i] = s;
+    }
+
+    s = 0;
+
+    for(int i = N-2; i >= 1; i--)
+    {
+        s += A[i];
+        if(s < 0)
+        {
+            s = 0;
+        }
+        RL[i] = s;
+    }
+    int maximal_sum = 0;
+    for(int i = 0; i < N-2; i++)
+    {
+        maximal_sum = max(maximal_sum, LR[i] + RL[i+2]);
+    }
+    return maximal_sum;
+    
+}
+
+//=========================================================================
+
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # Implement your solution here
+    N = len(A)
+
+    if N <= 3:
+        return 0
+
+    LR = [0] * N
+    RL = [0] * N
+    sum = 0
+
+    for i in range(1, N-1):
+        sum += A[i]
+        if sum < 0:
+            sum = 0
+        LR[i] = sum
+    
+    sum = 0
+
+    for i in range(N-2, 1, -1):
+        sum += A[i]
+        if sum < 0:
+            sum = 0
+        RL[i] = sum
+
+    maximal_sum = 0
+
+    for i in range(0, N-2):
+        maximal_sum = max(maximal_sum, LR[i] + RL[i+2])
+    return maximal_sum 
+    pass

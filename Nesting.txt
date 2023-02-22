@@ -1,0 +1,66 @@
+// you can use includes, for example:
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(string &S) {
+    // Implement your solution here
+    if(S.empty())
+    {
+        return 1;
+    }
+    int p = 0, N = S.size();
+
+    for(int i = 0; i < N; i++)
+    {
+        if(S[i] == '(')
+        {
+            p++;
+        }
+        else if(S[i] == ')')
+        {
+            p--;
+        }
+
+        if(p < 0)
+        {
+            return 0;
+        }
+    }
+    if(p == 0)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+//====================================================================
+
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(S):
+    # Implement your solution here
+    N = len(S)
+    if N == 0:
+        return 1
+    p = 0
+    for i in range(0, N):
+        if S[i] == '(':
+            p+=1
+        elif S[i] == ')':
+            p-=1
+        
+        if p < 0:
+            return 0
+    if p == 0:
+        return 1
+    else:
+        return 0
+    pass
