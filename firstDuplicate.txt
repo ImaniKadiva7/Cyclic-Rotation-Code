@@ -1,0 +1,38 @@
+// My Solutions to the code signal First Duplicate Problem in C++
+
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+int solution(vector<int> a) {
+    int N = a.size();
+    for(int i = 0; i < N; i++)
+    {
+        int t = abs(a[i]);
+        if(a[t-1] < 0)
+        {
+            return t;
+        }
+        a[t-1] = -a[t-1];
+    }
+    return -1;
+}
+
+//=========================================================================
+
+# My Solutions to the code signal first duplicate problem in Python
+
+def solution(a):
+    N = len(a)
+    
+    if N == 0:
+        return -1
+    
+    for i in range(0, N):
+        t = abs(a[i])
+        if a[t-1] < 1:
+            return t
+        a[t-1] = -a[t-1]
+    return -1
